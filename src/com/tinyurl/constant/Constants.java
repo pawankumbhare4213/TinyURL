@@ -10,7 +10,7 @@ public abstract class Constants {
 	public static final String LONG_URL = "LONG_URL";
 	public static final String SHORT_URL = "SHORT_URL";
 	public static final String TIMESTAMP = "TIMESTAMP";
-	public static final String INVALID_SHORT_URL = "Invalid URL!";
+	public static final String INVALID_SHORT_URL = "Invalid URL, please try again.";
 	public static final String MESSAGE = "MESSAGE";
 	public static final String SUCCESS = "success";
 	public static final String SECRET = "secret";

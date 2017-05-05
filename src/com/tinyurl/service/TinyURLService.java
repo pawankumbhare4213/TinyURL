@@ -26,7 +26,7 @@ public class TinyURLService {
 	private static final String INVALID_SHORT_URL = "Invalid URL!";
 	private static final String SHORT_URL = "SHORT_URL";
 	private static final String MESSAGE = "MESSAGE";
-	private static final Object SOMETHING_WENT_WRONG = "Something went wrong, please try again.";
+	private static final String SOMETHING_WENT_WRONG = "Something went wrong, please try again.";
 
 	@Context
 	private HttpServletResponse response;
@@ -55,7 +55,7 @@ public class TinyURLService {
 		JSONObject json = TinyURL.getURLDetails(shortURL);
 		try {
 			json.put(SHORT_URL, request.getServerName() + "/" + shortURL);
-		} catch (JSONException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			try {
 				json.append(MESSAGE, SOMETHING_WENT_WRONG);

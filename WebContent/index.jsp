@@ -139,10 +139,6 @@
 				$('#error-section').css('display', '').html('<strong>Oops!</strong> Something went wrong, please try again.');
 			}
 			var longURL = $('#long-url').val().trim();
-			if (!longURL) {
-				$('#error-section').css('display', '').html('<strong>Oops!</strong> Please enter your original URL.');
-				return;
-			}
 			$.ajax({
 				url : "/",
 				data : {

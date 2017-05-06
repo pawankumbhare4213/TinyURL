@@ -34,7 +34,7 @@ public class Codec {
 		while(true) {
 			rem = (decoded.mod(BigInteger.valueOf(charMap.length))).intValue();
 			sb.append(charMap[rem]);
-			if(decoded.equals(BigInteger.valueOf(0))) break;
+			if(decoded.equals(BigInteger.ZERO)) break;
 			decoded = decoded.divide(BigInteger.valueOf(charMap.length));
 		}
 		return sb.toString();

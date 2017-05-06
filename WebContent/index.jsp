@@ -25,20 +25,22 @@
 </head>
 <body>
 	<div class="g-recaptcha" data-sitekey="6LfsHSAUAAAAANNJWQAn0TU3iYkbLCCztxSy_EGr" data-callback="setURL" data-size="invisible"></div>
-	<div class="container">
-		<div class="page-header">
-		  	<h1>
-		  		<a target="_blank" href="http://www.pawankumbhare.com" style="cursor: hand; text-decoration: none; color: black;">PRK</a>
-		  		<small>&nbsp;URL Shortner</small>
-		  	</h1>
+	<nav class="navbar navbar-default" style="margin-bottom: 0px;">
+		<div class="container">
+			<div class="navbar-header"> 
+				<a class="navbar-brand" target="_blank" href="http://www.pawankumbhare.com"> 
+					<img alt="PRK" src="http://www.pawankumbhare.com/static/images/PRK-gray.png" style="margin-top: -2px; width: 60px;">  
+				</a>
+				<a class="navbar-brand" href="/"> URL Shortner </a>
+			</div>
 		</div>
-	</div>
+	</nav>
 	<div style="background-color: orange;">
 		<div class="container">
 			<div class="page-header" style="border-bottom: 0px;">
 				<p class="h1" style="color: whitesmoke; margin-top: 0px;">Simplify your links</p>
 				<div class="input-group">
-					<input id="long-url" type="text" class="form-control" placeholder="Place your original URL here..."> 
+					<input id="long-url" type="text" class="form-control" placeholder="http://  Place your original URL here..."> 
 						<span class="input-group-btn">
 						<button id="shorten-url" class="btn btn-default disabled" type="button" disabled="disabled"
 								onclick="javascript:verifyAndSetURL();">Shorten URL</button>
@@ -120,7 +122,13 @@
 		function verifyAndSetURL() {
 			$('#info-section').css('display', 'none');
 			$('#error-section').css('display', 'none');
-			grecaptcha.execute();
+			var longURL = $('#long-url').val().trim();
+			if (!longURL) {
+				$('#error-section').css('display', '').html('<strong>Oops!</strong> Please enter your original URL.');
+				return;
+			}
+			if(longURL.startsWith('http://') || longURL.startsWith('https://')) grecaptcha.execute();
+			else $('#error-section').css('display', '').html("<strong>Oops!</strong> Don't forget to include the http/https protocol in your URL.");
 		}
 		
 		function setURL(token) {
